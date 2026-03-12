@@ -3,4 +3,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def indedx():
-    return 'Olá, mundo'
+    return 'Programação de aplicação web é a melhor disciplina do mundo'
