@@ -1,6 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
-@app.route('/ola')
+@app.route('/')
 def indedx():
-    return '<h2>Programação de aplicação web é a melhor disciplina do mundo!<h2>'
+    return render_template('index.html')
+
+@app.route('/email')
+
+@app.route('/faleconosco')
+
+def contato():
+    return render_template('contato.html')
+
+if __name__ == '__main__':
+    app.run()
