@@ -1,6 +1,6 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/ola')
 def indedx():
-    return 'Programação de aplicação web é a melhor disciplina do mundo'
+    return '<h2>Programação de aplicação web é a melhor disciplina do mundo!<h2>'
