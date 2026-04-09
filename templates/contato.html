@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+
     <title>Contatos</title>
 </head>
 
 <body>
     <h1>Página de contato</h1>
+    <img src="{{url_for('static', filename='img/contato.png')}}" alt="" onclick="cliqueAqui()" class="contato"/>
     <h2>Nome: {{nome}}</h2>
     <h2>Contatos:</h2>
     <ol>
@@ -16,5 +20,7 @@
 
        
     </ol>
+
+     <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 </html>
