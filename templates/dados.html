@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados</title>
+</head>
+<body>
+    <form action="{{url_for('recebedados')}}" method="post">
+        
+        Nome: <input type="text" name="nome"><br>
+        Sobrenome: <input type="text" name="sobrenome"><br>
+        E-mail: <input type="email" name="email"><br>
+        Data de nascimento: <input type="date" name="data"><br>
+        Estado: <select name="estado">
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="CE">Ceará</option>
+            <option value="PB">Paraiba</option>
+        </select> <br>
+
+        <input type="checkbox" name="escola" value="IFRN"> IFRN <br>
+        <input type="checkbox" name="escola" value="UFRN"> UFRN <br>
+        <input type="checkbox" name="escola" value="UERN"> UERN <br>
+        <input type="checkbox" name="escola" value="outra"> Outra <br>
+
+        <input type="submit" value="Enviar">
+    </form>
+    
+</body>
+</html>

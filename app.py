@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request 
 app = Flask(__name__)
 
 @app.route('/')
@@ -38,7 +38,29 @@ def semestre(x):
 def perfil(usuario):
     return render_template('perfil.html', usuario = usuario)
 
+@app.route('/dados')
+def dados():
+    return render_template('dados.html')
 
+
+@app.route('/recebedados', methods = ['GET','POST'])
+def recebedados():
+    nome = request.form.get('nome')
+    sobrenome = request.form['sobrenome']
+    email = request.form['email']
+    nasc = request.form['data']
+    escola = request.form.getlist('escola') #get é usado pra pegar um item. getlist pega uma lista de itens. Útel neste exemplo porque é um checkbox, ou seja, pode receber mais que um valor.
+
+    return render_template('recebedados.html', nome = nome, sobrenome = sobrenome, email = email, nasc = nasc, escola = escola)
+
+@app.route('/compras')
+def compras():
+    return render_template('compras.html')
+
+@app.route('/recebecompras', methods = ['POST'])
+def recebecompras():
+    itens = request.form.getlist('item')
+    return render_template('recebecompras.html', itens = itens)
 
 if __name__ == '__main__':
     app.run()
