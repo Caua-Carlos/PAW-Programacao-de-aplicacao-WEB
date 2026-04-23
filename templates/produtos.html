@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <h1>Meus itens ({{qtd}})</h1>
+    <div class="flex flex-wrap mx-auto justify-evenly gap-8">
+    {% for i in itens %}
+    <div class="card bg-base-100 w-96 shadow-sm">
+  <figure>
+    <img class='max-h-lg w-auto'
+      src="{{i.img}}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      {{i.nome}}
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">R$ {{i.preco}}</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+
+    </div>
+
+</table>
+</body>
+</html>

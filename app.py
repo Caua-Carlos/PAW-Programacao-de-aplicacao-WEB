@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 @app.route('/')
@@ -61,6 +61,50 @@ def compras():
 def recebecompras():
     itens = request.form.getlist('item')
     return render_template('recebecompras.html', itens = itens)
+
+
+@app.route('/verificaridade/<int:idade>')
+def verificar(idade):
+    if idade>=18:
+        return f"Você tem {idade} anos. Portanto, você é maior de idade"
+    else:
+        return f"Você tem {idade} anos. Portanto, você é menor de idade"
+    
+@app.route('/verificaridade2/<int:idade>')
+def verificaridade2(idade):
+    return render_template('idade.html', idade=idade)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/verificar_login', methods = ['POST'])
+def verificar_login():
+    usuario = request.form.get('login')
+    senha = request.form.get('senha')
+
+    if usuario == 'admin' and senha == '12345':
+        return render_template('acesso.html')
+    else:
+        return render_template('acesso_negado.html')
+
+@app.route('/exemplolaco')
+def exemplolaco():
+    return render_template('exemplolaco.html')
+    
+@app.route('/produtos')
+def produtos():
+    itens = [
+        {'nome' : 'teclado', 'preco' : '200', 'img' : 'https://www.lognetinfo.com.br/imagens/250x250/23419A.jpg'},
+        {'nome' : 'smartphone', 'preco' : '1500', 'img' : 'https://imgs.pontofrio.com.br/55071143/1g.jpg'},
+        {'nome' : 'Pen-drive', 'preco' : '50', 'img' : 'https://img.kalunga.com.br/fotosdeprodutos/243483z_1.jpg'},
+        {'nome' : 'Pen-drive', 'preco' : '50', 'img' : 'https://m.media-amazon.com/images/I/41ajsKjg9EL._AC_UF894,1000_QL80_.jpg'},
+        {'nome' : 'smartphone', 'preco' : '1500', 'img' : 'https://trocafone.vtexassets.com/arquivos/ids/283737/iphone-14-meia-noite-traseira.jpg?v=639094496053700000'}
+    ]
+
+    qnt_itens = len(itens)
+    return render_template('produtos.html', itens = itens, qtd = qnt_itens)
+
 
 if __name__ == '__main__':
     app.run()
